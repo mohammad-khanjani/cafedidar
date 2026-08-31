@@ -1,0 +1,515 @@
+import breakfast from "@/assets/breakfast.jpg";
+import pancake from "@/assets/pancake.jpg";
+import espresso from "@/assets/espresso.jpg";
+import latte from "@/assets/latte.jpg";
+import hotTea from "@/assets/hot-tea.jpg";
+import coldDrink from "@/assets/cold-drink.jpg";
+import dessert from "@/assets/dessert.jpg";
+import snack from "@/assets/snack.jpg";
+import food from "@/assets/food.jpg";
+
+export type CategoryId =
+  | "breakfast"
+  | "coffee"
+  | "hot"
+  | "cold"
+  | "dessert"
+  | "snack"
+  | "food";
+
+export interface Category {
+  id: CategoryId | "all";
+  name: string;
+}
+
+export const categories: Category[] = [
+  { id: "all", name: "همه" },
+  { id: "breakfast", name: "صبحانه" },
+  { id: "coffee", name: "بار قهوه" },
+  { id: "hot", name: "بار گرم" },
+  { id: "cold", name: "بار سرد" },
+  { id: "dessert", name: "دسر" },
+  { id: "snack", name: "میان‌وعده" },
+  { id: "food", name: "غذا" },
+];
+
+export const categoryName: Record<CategoryId, string> = {
+  breakfast: "صبحانه",
+  coffee: "بار قهوه",
+  hot: "بار گرم",
+  cold: "بار سرد",
+  dessert: "دسر",
+  snack: "میان‌وعده",
+  food: "غذا",
+};
+
+export interface MenuItem {
+  id: string;
+  name: string;
+  category: CategoryId;
+  description: string;
+  ingredients: string[];
+  price: number;
+  image: string;
+  featured: boolean;
+  available: boolean;
+}
+
+export const menuItems: MenuItem[] = [
+  // صبحانه
+  {
+    id: "b-1",
+    name: "صبحانه دیدار",
+    category: "breakfast",
+    description: "املت، پنیر، کره، مربا و نان تازه",
+    ingredients: ["تخم‌مرغ", "پنیر", "کره", "مربا", "نان تازه"],
+    price: 280000,
+    image: breakfast,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "b-2",
+    name: "صبحانه انگلیسی",
+    category: "breakfast",
+    description: "تخم‌مرغ، سوسیس، قارچ، لوبیا و نان تست",
+    ingredients: ["تخم‌مرغ", "سوسیس", "قارچ", "لوبیا", "نان تست"],
+    price: 360000,
+    image: breakfast,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "b-3",
+    name: "املت مخصوص",
+    category: "breakfast",
+    description: "املت گوجه با پنیر و سبزیجات",
+    ingredients: ["تخم‌مرغ", "گوجه", "پنیر", "سبزیجات تازه"],
+    price: 220000,
+    image: breakfast,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "b-4",
+    name: "نیمرو",
+    category: "breakfast",
+    description: "دو عدد تخم‌مرغ نیمرو با نان تازه",
+    ingredients: ["تخم‌مرغ", "کره", "نان تازه"],
+    price: 180000,
+    image: breakfast,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "b-5",
+    name: "پنکیک",
+    category: "breakfast",
+    description: "پنکیک تازه با عسل و میوه فصل",
+    ingredients: ["آرد", "شیر", "تخم‌مرغ", "عسل", "میوه فصل"],
+    price: 240000,
+    image: pancake,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "b-6",
+    name: "فرنچ تست",
+    category: "breakfast",
+    description: "نان تست فرانسوی با عسل و میوه فصل",
+    ingredients: ["نان تست", "تخم‌مرغ", "شیر", "عسل", "میوه فصل"],
+    price: 260000,
+    image: pancake,
+    featured: false,
+    available: true,
+  },
+
+  // بار قهوه
+  {
+    id: "c-1",
+    name: "اسپرسو",
+    category: "coffee",
+    description: "قهوه اسپرسو با رست مخصوص دیدار",
+    ingredients: ["دانه قهوه عربیکا", "آب"],
+    price: 90000,
+    image: espresso,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "c-2",
+    name: "آمریکانو",
+    category: "coffee",
+    description: "اسپرسو و آب داغ",
+    ingredients: ["اسپرسو", "آب داغ"],
+    price: 100000,
+    image: espresso,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "c-3",
+    name: "لاته",
+    category: "coffee",
+    description: "اسپرسو، شیر بخار داده شده و فوم شیر",
+    ingredients: ["اسپرسو", "شیر", "فوم شیر"],
+    price: 145000,
+    image: latte,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "c-4",
+    name: "کاپوچینو",
+    category: "coffee",
+    description: "اسپرسو، شیر و فوم شیر",
+    ingredients: ["اسپرسو", "شیر", "فوم شیر"],
+    price: 140000,
+    image: latte,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "c-5",
+    name: "موکا",
+    category: "coffee",
+    description: "اسپرسو، شکلات و شیر",
+    ingredients: ["اسپرسو", "شکلات", "شیر"],
+    price: 160000,
+    image: latte,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "c-6",
+    name: "فلت وایت",
+    category: "coffee",
+    description: "اسپرسو با شیر بافت‌داده‌شده",
+    ingredients: ["اسپرسو", "شیر"],
+    price: 150000,
+    image: latte,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "c-7",
+    name: "آیس لاته",
+    category: "coffee",
+    description: "اسپرسو، شیر سرد و یخ",
+    ingredients: ["اسپرسو", "شیر سرد", "یخ"],
+    price: 155000,
+    image: coldDrink,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "c-8",
+    name: "آیس آمریکانو",
+    category: "coffee",
+    description: "اسپرسو، آب و یخ",
+    ingredients: ["اسپرسو", "آب", "یخ"],
+    price: 120000,
+    image: coldDrink,
+    featured: false,
+    available: true,
+  },
+
+  // بار گرم
+  {
+    id: "h-1",
+    name: "چای ایرانی",
+    category: "hot",
+    description: "چای تازه‌دم ایرانی",
+    ingredients: ["چای سیاه", "آب"],
+    price: 60000,
+    image: hotTea,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "h-2",
+    name: "چای ماسالا",
+    category: "hot",
+    description: "چای ماسالا با شیر و ادویه‌های معطر",
+    ingredients: ["چای سیاه", "شیر", "هل", "دارچین", "زنجبیل"],
+    price: 130000,
+    image: hotTea,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "h-3",
+    name: "چای سبز",
+    category: "hot",
+    description: "چای سبز معطر",
+    ingredients: ["چای سبز", "آب"],
+    price: 70000,
+    image: hotTea,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "h-4",
+    name: "هات چاکلت",
+    category: "hot",
+    description: "شکلات داغ غلیظ و خامه‌ای",
+    ingredients: ["شکلات تلخ", "شیر", "خامه"],
+    price: 155000,
+    image: hotTea,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "h-5",
+    name: "دمنوش مخصوص دیدار",
+    category: "hot",
+    description: "ترکیبی از گیاهان معطر و تازه",
+    ingredients: ["بابونه", "به‌لیمو", "دارچین", "سیب خشک"],
+    price: 110000,
+    image: hotTea,
+    featured: false,
+    available: true,
+  },
+
+  // بار سرد
+  {
+    id: "d-1",
+    name: "موهیتو",
+    category: "cold",
+    description: "لیمو، نعناع و سودا",
+    ingredients: ["لیمو", "نعناع", "سودا", "یخ"],
+    price: 145000,
+    image: coldDrink,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "d-2",
+    name: "لیموناد",
+    category: "cold",
+    description: "لیمو تازه، نعناع و یخ",
+    ingredients: ["لیمو تازه", "نعناع", "یخ", "شکر"],
+    price: 130000,
+    image: coldDrink,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "d-3",
+    name: "آیس تی",
+    category: "cold",
+    description: "چای سرد با لیمو",
+    ingredients: ["چای", "لیمو", "یخ"],
+    price: 120000,
+    image: coldDrink,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "d-4",
+    name: "اسموتی توت‌فرنگی",
+    category: "cold",
+    description: "توت‌فرنگی تازه و شیر",
+    ingredients: ["توت‌فرنگی", "شیر", "یخ"],
+    price: 175000,
+    image: coldDrink,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "d-5",
+    name: "نوشیدنی فصل",
+    category: "cold",
+    description: "نوشیدنی ویژه فصل کافه دیدار",
+    ingredients: ["میوه فصل", "آب معدنی", "یخ"],
+    price: 165000,
+    image: coldDrink,
+    featured: false,
+    available: true,
+  },
+
+  // دسر
+  {
+    id: "s-1",
+    name: "تیرامیسو",
+    category: "dessert",
+    description: "تیرامیسوی کلاسیک با قهوه و ماسکارپونه",
+    ingredients: ["ماسکارپونه", "قهوه", "بیسکویت", "کاکائو"],
+    price: 195000,
+    image: dessert,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "s-2",
+    name: "چیزکیک",
+    category: "dessert",
+    description: "چیزکیک روز با سس مخصوص",
+    ingredients: ["پنیر خامه‌ای", "بیسکویت", "سس میوه"],
+    price: 185000,
+    image: dessert,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "s-3",
+    name: "براونی شکلاتی",
+    category: "dessert",
+    description: "براونی شکلاتی با بافت نرم",
+    ingredients: ["شکلات تلخ", "کره", "تخم‌مرغ", "گردو"],
+    price: 175000,
+    image: dessert,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "s-4",
+    name: "کیک روز",
+    category: "dessert",
+    description: "کیک تازه روز",
+    ingredients: ["آرد", "تخم‌مرغ", "شکر", "طعم روز"],
+    price: 165000,
+    image: dessert,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "s-5",
+    name: "دسر مخصوص دیدار",
+    category: "dessert",
+    description: "دسر ویژه سرآشپز کافه دیدار",
+    ingredients: ["خامه", "شکلات", "میوه فصل"],
+    price: 210000,
+    image: dessert,
+    featured: false,
+    available: true,
+  },
+
+  // میان‌وعده
+  {
+    id: "n-1",
+    name: "سیب‌زمینی مخصوص",
+    category: "snack",
+    description: "سیب‌زمینی ترد با سس مخصوص",
+    ingredients: ["سیب‌زمینی", "سس مخصوص", "ادویه"],
+    price: 165000,
+    image: snack,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "n-2",
+    name: "تست پنیر",
+    category: "snack",
+    description: "نان تست، پنیر و سبزیجات",
+    ingredients: ["نان تست", "پنیر", "گوجه", "سبزیجات"],
+    price: 155000,
+    image: snack,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "n-3",
+    name: "ساندویچ مرغ",
+    category: "snack",
+    description: "مرغ گریل شده، سبزیجات و سس مخصوص",
+    ingredients: ["مرغ گریل", "کاهو", "گوجه", "سس مخصوص", "نان"],
+    price: 235000,
+    image: snack,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "n-4",
+    name: "بشقاب مزه",
+    category: "snack",
+    description: "ترکیبی از خوراکی‌های منتخب دیدار",
+    ingredients: ["پنیر", "زیتون", "خشکبار", "نان"],
+    price: 245000,
+    image: snack,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "n-5",
+    name: "اسنک مخصوص دیدار",
+    category: "snack",
+    description: "اسنک گرم با مواد تازه",
+    ingredients: ["نان", "پنیر", "سبزیجات", "سس"],
+    price: 195000,
+    image: snack,
+    featured: false,
+    available: true,
+  },
+
+  // غذا
+  {
+    id: "f-1",
+    name: "پاستا",
+    category: "food",
+    description: "پاستای روز با سس مخصوص",
+    ingredients: ["پاستا", "سس مخصوص", "پنیر پارمزان"],
+    price: 320000,
+    image: food,
+    featured: true,
+    available: true,
+  },
+  {
+    id: "f-2",
+    name: "ساندویچ مرغ",
+    category: "food",
+    description: "مرغ گریل شده با سبزیجات تازه",
+    ingredients: ["مرغ گریل", "سبزیجات تازه", "نان", "سس"],
+    price: 285000,
+    image: food,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "f-3",
+    name: "برگر مخصوص",
+    category: "food",
+    description: "برگر دست‌ساز با مواد تازه",
+    ingredients: ["گوشت دست‌ساز", "پنیر", "کاهو", "گوجه", "نان برگر"],
+    price: 380000,
+    image: food,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "f-4",
+    name: "سالاد سزار",
+    category: "food",
+    description: "کاهو، مرغ گریل شده، پنیر پارمزان و سس سزار",
+    ingredients: ["کاهو", "مرغ گریل", "پنیر پارمزان", "سس سزار", "نان تست"],
+    price: 295000,
+    image: food,
+    featured: false,
+    available: true,
+  },
+  {
+    id: "f-5",
+    name: "غذای روز",
+    category: "food",
+    description: "غذای ویژه روز کافه دیدار",
+    ingredients: ["مواد تازه روز"],
+    price: 330000,
+    image: food,
+    featured: false,
+    available: true,
+  },
+];
+
+export const featuredItems = menuItems.filter((item) => item.featured).slice(0, 4);
+
+export const cafeInfo = {
+  name: "کافه دیدار",
+  tagline: "طعم خوب، حال خوب",
+  address: "تهران، خیابان ولیعصر، نبش کوچه دیدار، پلاک ۱۲",
+  hours: "همه روزه از ساعت ۹:۰۰ تا ۲۴:۰۰",
+  phone: "۰۲۱-۱۲۳۴۵۶۷۸",
+  socials: [
+    { label: "اینستاگرام", value: "@cafe.didar" },
+    { label: "تلگرام", value: "@cafedidar" },
+  ],
+};
