@@ -38,6 +38,12 @@ jobs:
 
       - name: Build
         run: bun run build
+      - name: Inspect build output
+        run: |
+          echo "=== .output ==="
+          find .output -maxdepth 3 -type f | sort || true
+          echo "=== dist ==="
+          find dist -maxdepth 3 -type f | sort || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
