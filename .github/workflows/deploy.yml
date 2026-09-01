@@ -21,12 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
+        uses: actions/checkout@v4
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -38,12 +33,11 @@ jobs:
 
       - name: Build
         run: bun run build
-      - name: Inspect build output
+
+      - name: Check output
         run: |
-          echo "=== .output ==="
-          find .output -maxdepth 3 -type f | sort || true
-          echo "=== dist ==="
-          find dist -maxdepth 3 -type f | sort || true
+          echo "=== OUTPUT ==="
+          find . -maxdepth 3 -type f \( -name "index.html" -o -name "*.js" -o -name "*.css" \) | sort
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -62,6 +56,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
